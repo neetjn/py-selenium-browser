@@ -14,8 +14,8 @@ class Configure(object):
         :param platforms: List of browser's available platforms.
         :type platforms: tuple, list
         """
-        assert all(platform in [name for name, _ in iteritems(item) \
-                    for item in PLATFORMS.platforms] for platform in platforms), \
+        available = [platform for item in PLATFORMS.platforms for _, platform in iteritems(item)]
+        assert all(platform in available for platform in platforms), \
                     'An error occurred while updating; platform does not exist'
         BROWSERS.find(name, enabled=False).platforms = platforms
 

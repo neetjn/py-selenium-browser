@@ -1,7 +1,7 @@
 import random
 
 from pysbr import Configure
-from pysbr.constants import BROWSERS
+from pysbr.constants import BROWSERS, PLATFORMS
 from unittest import TestCase
 
 
@@ -10,9 +10,9 @@ class TestConfigure(TestCase):
     def test_update(self):
         """test configure updating platform information"""
         browser = random.choice(BROWSERS.browsers)
-        Configure.update(browser.name, {
-
-        })
+        platforms = [PLATFORMS.WINDOWS.get('legacy')]
+        Configure.update(browser.name, platforms)
+        self.assertEqual(browser.platforms, platforms)
 
     def test_enable_disable(self):
         """test configure enabling and disabling browsers"""
