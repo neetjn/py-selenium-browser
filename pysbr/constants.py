@@ -36,7 +36,7 @@ class BROWSERS(object):  #pylint: disable=too-few-public-methods
                 "javascriptEnabled": True
             }
             self.profile = profile
-            self.enabled = True
+            self.enabled = False
 
 
     @staticmethod
