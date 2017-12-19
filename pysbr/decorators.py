@@ -3,8 +3,6 @@ from nose_parameterized import parameterized
 
 from pysbr.constants import BROWSERS, PLATFORMS
 
-# TODO: updates for new platform available logic, no more meta
-
 
 class Decorators(parameterized):
     """
@@ -35,8 +33,8 @@ class Decorators(parameterized):
             combinations = []
 
             if platform:
-                platforms = [getattr(PLATFORMS, name) for name in PLATFORMS.meta['available']]
-                assert next(items for items in platforms if platform in items.itervalues())
+                platforms = [name for name, label in item.iteritems() for item in PLATFORMS.platforms]
+                assert platform in platforms
 
             for browser in BROWSERS.browsers:
 

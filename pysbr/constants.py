@@ -1,7 +1,13 @@
 class PLATFORMS:
 
-    WINDOWS = {'default': 'WIN10', 'legacy': 'WINDOWS'}
-    MAC = {'default': 'MAC'}
+    WINDOWS = {
+        'default': 'WIN10',
+        'legacy': 'WINDOWS'
+    }
+
+    MAC = {
+        'default': 'MAC'
+    }
 
     platforms = [WINDOWS, MAC]
 
