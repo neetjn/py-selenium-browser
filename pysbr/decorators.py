@@ -34,8 +34,7 @@ class Decorators(parameterized):
             combinations = []
 
             if platform:
-                assert platform in [name for name, _ in iteritems(platform) \
-                    for platform in PLATFORMS.platforms]
+                assert platform in [p for _, p in iteritems(pi) for pi in PLATFORMS.platforms]
 
             for browser in BROWSERS.browsers:
 
