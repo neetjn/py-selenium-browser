@@ -3,7 +3,7 @@ class PLATFORMS:
     WINDOWS = {'default': 'WIN10', 'legacy': 'WINDOWS'}
     MAC = {'default': 'MAC'}
 
-    meta = {'available': ('WINDOWS', 'MAC')}
+    platforms = [WINDOWS, MAC]
 
 
 class BROWSERS:
@@ -14,7 +14,7 @@ class BROWSERS:
             """
             :Description: Base definition for browsers.
             :param name: Name of browser, will be used in capabilities.
-            :type name: basestring
+            :type name: string
             :param platforms: Supported platforms.
             :type platforms: tuple, list
             :param capabilities: Capabilities for browser instances.
@@ -30,6 +30,7 @@ class BROWSERS:
                 "javascriptEnabled": True
             }
             self.profile = profile
+            self.enabled = True
 
 
     CHROME = BROWSER(
@@ -52,4 +53,4 @@ class BROWSERS:
         name='opera',
         platforms=[PLATFORMS.WINDOWS.get('default'), PLATFORMS.MAC.get('default')])
 
-    meta = {'available': ('CHROME', 'FIREFOX', 'EDGE', 'SAFARI', 'OPERA')}
+    browsers = [CHROME, FIREFOX, EDGE, SAFARI, OPERA]

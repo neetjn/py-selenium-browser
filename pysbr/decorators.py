@@ -1,7 +1,9 @@
 import random
 from nose_parameterized import parameterized
 
-from pysb.constants import BROWSERS, PLATFORMS
+from pysbr.constants import BROWSERS, PLATFORMS
+
+# TODO: updates for new platform available logic, no more meta
 
 
 class Decorators(parameterized):
@@ -36,8 +38,11 @@ class Decorators(parameterized):
                 platforms = [getattr(PLATFORMS, name) for name in PLATFORMS.meta['available']]
                 assert next(items for items in platforms if platform in items.itervalues())
 
-            for browser in BROWSERS.meta['available']:
-                browser = getattr(BROWSERS, browser)
+            for browser in BROWSERS.browsers:
+
+                if not browser.enabled:
+                    # ignore disabled browsers
+                    continue
 
                 if platform and platform not in browser.platforms:
                     # filter out platforms
@@ -70,9 +75,8 @@ class Decorators(parameterized):
         :type profile: FirefoxProfile, ChromeOptions, ...
         """
 
-        browser = next(browser for browser in BROWSERS.meta['available'] \
-            if getattr(BROWSERS, browser).name == name)
-        browser = getattr(BROWSERS, browser)
+        browser = next(browser for browser in BROWSERS.browsers \
+            if browser.name == name and browser.enabled)
         capabilities = capabilities or {}
 
         if platform:
@@ -90,14 +94,7 @@ class Decorators(parameterized):
         """
         :Description: Runs test against random browser on a random available platform.
         """
-
-        browsers = []
-
-        for browser in BROWSERS.meta['available']:
-            browser = getattr(BROWSERS, browser)
-            browsers.append(browser)
-
-        browser = random.choice(browsers)
+        browser = random.choice([browser for browser in BROWSERS.browsers if browser.enabled])
 
         capabilities = dict.copy(browser.capabilities)
         capabilities.setdefault('platform', random.choice(browser.platforms))

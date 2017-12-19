@@ -1,1 +1,1 @@
-from pysb.decorators import Decorators
+from pysbr.decorators import Decorators
