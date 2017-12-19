@@ -1,2 +1,46 @@
 # py-selenium-browser
-Decorators for provisioning tests with remote webdrivers.
+
+[![build](https://travis-ci.org/neetjn/pysb.svg?branch=master)](https://travis-ci.org/neetjn/pysb)
+[![PyPI version](https://badge.fury.io/py/pysb.svg)](https://badge.fury.io/py/pysb)
+[![Code Health](https://landscape.io/github/neetjn/pysb/master/landscape.svg?style=flat)](https://landscape.io/github/neetjn/pysb/master)
+[![codecov](https://codecov.io/gh/neetjn/pysb/branch/master/graph/badge.svg)](https://codecov.io/gh/neetjn/pysb)
+
+Decorators for provisioning tests with selenium remote webdrivers.
+
+## About
+
+`py-selenium-browser` is a very simple project based off of [nose_parammeterzed](https://github.com/wolever/parameterized). This project provides very simple and easily configurable decorators to parameterize individual tests to run against multiple browser configurations against your stack.
+
+### Usage
+
+`py-component-controller` supports both Python 2.7 and 3.6 and can be installed with pip like so,
+
+```python
+pip install pysb
+```
+
+Import `Decorators` and `Configuration` from `pysb` to get started,
+
+```python
+import os
+from pysb import Configuration, Decorators
+from selenium import webdriver
+from unittest import TestCase
+
+
+Configuration.browser()
+COMMAND_EXECUTOR = os.environ.get('COMMAND_EXECUTOR')
+
+
+class SampleTest(TestCase):
+
+    def bootstrap(capabilities, profile):
+        return webdriver.Remote(
+            COMMAND_EXECUTOR, capabilities, profile)
+
+    @Decorators.browsers()
+    def test_login(self, capabilities, profile):
+        browser = self.bootstrap(capabilities, profile)
+        ...
+        browser.stop_client()
+```
