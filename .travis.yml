@@ -2,8 +2,6 @@ language: python
 python:
   - '2.7'
   - '3.6'
-env:
-  - NODE_VERSION="8"
 before_install:
   - nvm install $NODE_VERSION
   - npm install -g chromedriver
@@ -12,7 +10,6 @@ before_install:
 install:
   - make setup
 script:
-  - make app
   - make test
   - test $TRAVIS_BRANCH = "master" &&
     codecov
