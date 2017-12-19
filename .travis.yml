@@ -9,8 +9,6 @@ before_install:
   - npm install -g chromedriver
   - pip install virtualenv
   - pip install codecov
-addons:
-  chrome: stable
 install:
   - make setup
 script:

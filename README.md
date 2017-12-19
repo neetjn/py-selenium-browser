@@ -1,9 +1,9 @@
 # py-selenium-browser
 
-[![build](https://travis-ci.org/neetjn/pysb.svg?branch=master)](https://travis-ci.org/neetjn/pysb)
-[![PyPI version](https://badge.fury.io/py/pysb.svg)](https://badge.fury.io/py/pysb)
-[![Code Health](https://landscape.io/github/neetjn/pysb/master/landscape.svg?style=flat)](https://landscape.io/github/neetjn/pysb/master)
-[![codecov](https://codecov.io/gh/neetjn/pysb/branch/master/graph/badge.svg)](https://codecov.io/gh/neetjn/pysb)
+[![build](https://travis-ci.org/neetjn/pysbr.svg?branch=master)](https://travis-ci.org/neetjn/pysbr)
+[![PyPI version](https://badge.fury.io/py/pysbr.svg)](https://badge.fury.io/py/pysbr)
+[![Code Health](https://landscape.io/github/neetjn/pysbr/master/landscape.svg?style=flat)](https://landscape.io/github/neetjn/pysbr/master)
+[![codecov](https://codecov.io/gh/neetjn/pysbr/branch/master/graph/badge.svg)](https://codecov.io/gh/neetjn/pysrb)
 
 Decorators for provisioning tests with selenium remote webdrivers.
 
@@ -16,7 +16,7 @@ Decorators for provisioning tests with selenium remote webdrivers.
 `py-component-controller` supports both Python 2.7 and 3.6 and can be installed with pip like so,
 
 ```python
-pip install pysb
+pip install pysbr
 ```
 
 Import `Decorators` and `Configure` from `pysb` to get started,
@@ -26,12 +26,12 @@ import os
 from selenium import webdriver
 from unittest import TestCase
 
-from pysb import Configure, Decorators
-from pysb.constants import BROWSERS, PLATFORMS
+from pysbr import Configure, Decorators
+from pysbr.constants import BROWSERS, PLATFORMS
 
 
 Configure.update(name=BROWSERS.CHROME.name, platforms=[
-    PLATFORMS.WINDOWS.get('default')
+    PLATFORMS.WINDOWS.get('default'f)
 ])
 Configure.enable(name=BROWSERS.FIREFOX.name)
 Configure.disable(name=BROWSERS.OPERA.name)

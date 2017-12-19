@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='pysb',
+    name='pysbr',
     description='Decorators for provisioning tests with remote webdrivers.',
     version='0.0.1',
     url='https://github.com/neetjn/py-selenium-browser',
@@ -20,5 +20,5 @@ setup(
         'nose',
         'nose_parameterized'
     ],
-    packages=['pysb']
+    packages=['pysbr']
 )
