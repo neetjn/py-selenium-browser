@@ -19,16 +19,23 @@ Decorators for provisioning tests with selenium remote webdrivers.
 pip install pysb
 ```
 
-Import `Decorators` and `Configuration` from `pysb` to get started,
+Import `Decorators` and `Configure` from `pysb` to get started,
 
 ```python
 import os
-from pysb import Configuration, Decorators
 from selenium import webdriver
 from unittest import TestCase
 
+from pysb import Configure, Decorators
+from pysb.constants import BROWSERS, PLATFORMS
 
-Configuration.browser()
+
+Configure.update(name=BROWSERS.CHROME.name, platforms=[
+    PLATFORMS.WINDOWS.get('default')
+])
+Configure.enable(name=BROWSERS.FIREFOX.name)
+Configure.disable(name=BROWSERS.OPERA.name)
+
 COMMAND_EXECUTOR = os.environ.get('COMMAND_EXECUTOR')
 
 
