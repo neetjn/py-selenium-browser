@@ -2,7 +2,6 @@
 
 [![build](https://travis-ci.org/neetjn/py-selenium-browser.svg?branch=master)](https://travis-ci.org/neetjn/py-selenium-browser)
 [![PyPI version](https://badge.fury.io/py/pysbr.svg)](https://badge.fury.io/py/pysbr)
-[![Code Health](https://landscape.io/github/neetjn/py-selenium-browser/master/landscape.svg?style=flat)](https://landscape.io/github/neetjn/py-selenium-browser/master)
 [![codecov](https://codecov.io/gh/neetjn/py-selenium-browser/branch/master/graph/badge.svg)](https://codecov.io/gh/neetjn/py-selenium-browser)
 
 Decorators for provisioning tests with selenium remote webdrivers.
