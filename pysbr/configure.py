@@ -1,6 +1,5 @@
-from six import iteritems
-
 from pysbr.constants import BROWSERS, PLATFORMS
+from six import iteritems
 
 
 class Configure(object):

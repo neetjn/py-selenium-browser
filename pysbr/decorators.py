@@ -1,8 +1,7 @@
 import random
+from pysbr.constants import BROWSERS, PLATFORMS
 from nose_parameterized import parameterized
 from six import iteritems
-
-from pysbr.constants import BROWSERS, PLATFORMS
 
 
 class Decorators(parameterized):
