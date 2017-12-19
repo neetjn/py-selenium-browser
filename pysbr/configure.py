@@ -6,7 +6,19 @@ from pysbr.constants import BROWSERS, PLATFORMS
 class Configure(object):
 
     @staticmethod
-    def update(name, platforms):
+    def capabilities(name, capabilities):
+        """
+        :Description: Update an available browser's capabilities.
+        :Warning: A browser's platform is automatically constructed when a test is decorated.
+        :param capabilities: Capabilities to patch.
+        :type capabilities: dict
+        """
+        BROWSERS.find(name, enabled=False)\
+            .capabilities\
+            .update(capabilities)
+
+    @staticmethod
+    def platforms(name, platforms):
         """
         :Description: Update an available browser's attributes.
         :param name: Name of browser to target.
