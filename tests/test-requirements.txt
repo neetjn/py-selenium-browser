@@ -2,3 +2,4 @@ nose
 nose_parameterized
 pylint
 pytest-cov
+six

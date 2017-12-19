@@ -18,7 +18,8 @@ setup(
     ],
     install_requires=[
         'nose',
-        'nose_parameterized'
+        'nose_parameterized',
+        'six'
     ],
     packages=['pysbr']
 )
