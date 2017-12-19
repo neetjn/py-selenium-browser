@@ -1,5 +1,6 @@
 import random
 from nose_parameterized import parameterized
+from six import iteritems
 
 from pysbr.constants import BROWSERS, PLATFORMS
 
@@ -34,7 +35,7 @@ class Decorators(parameterized):
 
             if platform:
                 assert platform in \
-                    [name for name, _ in item.iteritems() for item in PLATFORMS.platforms]
+                    [name for name, _ in iteritems(item) for item in PLATFORMS.platforms]
 
             for browser in BROWSERS.browsers:
 

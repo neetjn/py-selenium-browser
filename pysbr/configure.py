@@ -1,3 +1,5 @@
+from six import iteritems
+
 from pysbr.constants import BROWSERS, PLATFORMS
 
 
@@ -14,7 +16,7 @@ class Configure(object):
         """
         for browser in BROWSERS.browsers:
             if browser.name == name:
-                assert all(platform in [name for name, _ in item.iteritems() \
+                assert all(platform in [name for name, _ in iteritems(item) \
                     for item in PLATFORMS.platforms] for platform in platforms), \
                     'An error occurred while updating; platform does not exist'
                 browser.platforms = platforms
