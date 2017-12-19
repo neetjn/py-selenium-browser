@@ -39,6 +39,19 @@ class BROWSERS(object):  #pylint: disable=too-few-public-methods
             self.enabled = True
 
 
+    @staticmethod
+    def find(name, enabled=True):
+        """
+        :Description: Find a browser by it's given name.
+        :param name: Name of browser to search for.
+        :type name: string
+        :param enabled: Only find enabled browsers.
+        :type enabled: bool
+        :return: BROWSER
+        """
+        return next(browser for browser in BROWSERS.browsers \
+            if browser.name == name and (browser.enabled if enabled else True))
+
     CHROME = BROWSER(
         name='chrome',
         platforms=[PLATFORMS.WINDOWS.get('default'), PLATFORMS.MAC.get('default')])

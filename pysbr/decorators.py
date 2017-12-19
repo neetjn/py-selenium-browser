@@ -16,7 +16,7 @@ class Decorators(parameterized):
         """
         :Description: Runs test against all browser combinatorics.
         :param platform: Platform specification for target browsers.
-        :type platform: basestring
+        :type platform: string
         :param development: If specified, will target first available browser on hub.
         :type development: bool
         """
@@ -34,8 +34,8 @@ class Decorators(parameterized):
             combinations = []
 
             if platform:
-                assert platform in \
-                    [name for name, _ in iteritems(item) for item in PLATFORMS.platforms]
+                assert platform in [name for name, _ in iteritems(platform) \
+                    for platform in PLATFORMS.platforms]
 
             for browser in BROWSERS.browsers:
 
@@ -67,15 +67,14 @@ class Decorators(parameterized):
         :param iterations: Number of times to run test.
         :type iterations: Integer
         :param platform: Platform to target.
-        :type platform: basestring
+        :type platform: string
         :param capabilities: Capabilities of remote webdriver.
         :type capabilities: dict
         :param profile: Profile for remote webdriver.
         :type profile: FirefoxProfile, ChromeOptions, ...
         """
 
-        browser = next(browser for browser in BROWSERS.browsers \
-            if browser.name == name and browser.enabled)
+        browser = BROWSERS.find(name)
         capabilities = capabilities or {}
 
         if platform:

@@ -14,15 +14,10 @@ class Configure(object):
         :param platforms: List of browser's available platforms.
         :type platforms: tuple, list
         """
-        for browser in BROWSERS.browsers:
-            if browser.name == name:
-                assert all(platform in [name for name, _ in iteritems(item) \
+        assert all(platform in [name for name, _ in iteritems(item) \
                     for item in PLATFORMS.platforms] for platform in platforms), \
                     'An error occurred while updating; platform does not exist'
-                browser.platforms = platforms
-                return True
-
-        return False
+        BROWSERS.find(name, enabled=False).platforms = platforms
 
     @staticmethod
     def enable(name):
@@ -31,12 +26,7 @@ class Configure(object):
         :param name: Name of browser to target.
         :type name: string
         """
-        for browser in BROWSERS.browsers:
-            if browser.name == name:
-                browser.enabled = True
-                return True
-
-        return False
+        BROWSERS.find(name, enabled=False).enabled = True
 
     @staticmethod
     def disable(name):
@@ -45,9 +35,4 @@ class Configure(object):
         :param name: Name of browser to target.
         :type name: string
         """
-        for browser in BROWSERS.browsers:
-            if browser.name == name:
-                browser.enabled = False
-                return True
-
-        return False
+        BROWSERS.find(name, enabled=False).enabled = False
