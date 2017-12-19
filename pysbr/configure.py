@@ -14,7 +14,8 @@ class Configure(object):
         """
         for browser in BROWSERS.browsers:
             if browser.name == name:
-                assert all(platform in PLATFORMS.meta.get('available') for platform in platforms), \
+                assert all(platform in [name for name, _ in item.iteritems() \
+                    for item in PLATFORMS.platforms] for platform in platforms), \
                     'An error occurred while updating; platform does not exist'
                 browser.platforms = platforms
                 return True

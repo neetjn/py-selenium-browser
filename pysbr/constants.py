@@ -1,4 +1,4 @@
-class PLATFORMS:
+class PLATFORMS(object):  #pylint: disable=too-few-public-methods
 
     WINDOWS = {
         'default': 'WIN10',
@@ -12,9 +12,9 @@ class PLATFORMS:
     platforms = [WINDOWS, MAC]
 
 
-class BROWSERS:
+class BROWSERS(object):  #pylint: disable=too-few-public-methods
 
-    class BROWSER(object):
+    class BROWSER(object):  #pylint: disable=too-few-public-methods
 
         def __init__(self, name, platforms, capabilities=None, profile=None):
             """

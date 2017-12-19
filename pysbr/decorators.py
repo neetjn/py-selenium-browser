@@ -33,8 +33,8 @@ class Decorators(parameterized):
             combinations = []
 
             if platform:
-                platforms = [name for name, label in item.iteritems() for item in PLATFORMS.platforms]
-                assert platform in platforms
+                assert platform in \
+                    [name for name, _ in item.iteritems() for item in PLATFORMS.platforms]
 
             for browser in BROWSERS.browsers:
 
@@ -59,7 +59,7 @@ class Decorators(parameterized):
             return super(Decorators, cls).expand([combination for combination in combinations])
 
     @classmethod
-    def browser(cls, name, iterations=1, platform=None, capabilities=None, profile=None):
+    def browser(cls, name, iterations=1, platform=None, capabilities=None, profile=None):  #pylint: disable=too-many-arguments
         """
         :Description: Runs test against given browser specification.
         :Warning: If a platform is not specified, selenium hub will decide first available.
@@ -85,7 +85,7 @@ class Decorators(parameterized):
         _capabilities = dict.copy(browser.capabilities)
         _capabilities.update(capabilities)
 
-        return super(Decorators, cls).expand([(_capabilities, None)]*iterations)
+        return super(Decorators, cls).expand([(_capabilities, profile)]*iterations)
 
     @classmethod
     def random_browser(cls):
