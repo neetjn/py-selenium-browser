@@ -9,5 +9,11 @@ install:
   - make setup
 script:
   - make test
-  - test $TRAVIS_BRANCH = "master" &&
-    codecov
+  - test $TRAVIS_BRANCH = "master" && codecov
+deploy:
+  provider: pypi
+  user: neetjn
+  password:
+    secure: LEXoetMB4cx4i/tOdybSjaKxlge5nsj7gQT0zkypsBV3UG3wqpsNfjaGhDxN1qy4NmGUAnGoNg9lS/lcjDwiEq9916gKX/MLmcz1ml++r8SsZdbTeKiHfzfUYh5KNgtgx1FZefGVDHeKG51ndAX3iMV4sgAMIRTAKJMm/X9WwomDXiiJWBYddSCkHVEfTu15MjuR5gROeRQLZ3Ifid7mSCo6+H68AWfVluHN7MkFMAXk3Seb/OYEt15SbH5XY6fwIP5fuRqMA6OeacYQWg9dGL+IoeokZ+9XqF0+eqOHa8zcJBwwkPTIneswVtSpU4QtPt2B5UEovmKVjuDWnmjK0E0+lGdeoqxYME3fOppRMLOK7+cX/Wt6YBTffW13xJZQf2fYOPVrQrjD4/eZDpDqwvEJbRZfQKiYYClRNi3R2Oo4RHlMezVGQJOCVvXMxh2pxNUonF999p4XFByg14xeMik+lJp9M80rCefRZeCJGVrqP10Khspl0/T6RfOHvAw30ryjQaXQPWvZ9fsfEk4xVrAA4C8dGlkX5sOhDf/rFSFdVYjWPB2sF5bkt232EG7jG8xyXjebnWG5h36JHts4Es7+3G8BGfUxYVFZ0t8lzLGJedsQMxo1F6qM/Y2yNKvA1Gg478NUtgd0fau/uyn1HK0Ie/Q5iUEhG5+CGaAPsuU=
+  on:
+    branch: master

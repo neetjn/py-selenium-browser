@@ -5,7 +5,7 @@ setup(
     name='pysbr',
     description='Decorators for provisioning tests with remote webdrivers.',
     version='0.0.1',
-    url='https://github.com/neetjn/py-selenium-browser',
+    url='https://neetjn.github.io/py-selenium-browser',
     author='John Nolette',
     author_email='john@neetgroup.net',
     license='MIT',

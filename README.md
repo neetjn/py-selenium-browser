@@ -56,14 +56,16 @@ from pysbr.constants import BROWSERS
 
 BROWSERS.ANDROID = BROWSERS.BROWSER(
     name, platforms, capabilities=None, profile=None)
-BROWSERS.browserS.append(BROWSERS.ANDROID)
+BROWSERS.browsers.append(BROWSERS.ANDROID)
 ```
 
 All browsers also disabled by default, so be sure to enable them prior to use with the decorators.
 
 ## Testing
 
-All module related unit tests are in the `tests` subdirectory. To setup your environment run `make setup`. To run the test suite, use `make test`.
+All module related unit tests are in the `tests` subdirectory.
+
+To setup your environment run `make setup`. To run the test suite, use `make test`.
 
 Requirements:
 * Python 2.7, 3.6 (with pip)
