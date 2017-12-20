@@ -12,7 +12,7 @@ Decorators for provisioning tests with selenium remote webdrivers.
 
 ### Usage
 
-`py-component-controller` supports both Python 2.7 and 3.6 and can be installed with pip like so,
+`py-selenium-browser` supports both Python 2.7 and 3.6 and can be installed with pip like so,
 
 ```python
 pip install pysbr
