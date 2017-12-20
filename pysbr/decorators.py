@@ -10,7 +10,6 @@ class Decorators(parameterized):
     :Description: All-in-one decorators for provisioning remote selenium webdrivers.
     :Example: https://github.com/neetjn/nose-parameterized-wrapper-example
     """
-
     @classmethod
     def browsers(cls, platform=None, development=False):
         """
@@ -49,12 +48,12 @@ class Decorators(parameterized):
                 if platform:
                     capabilities = dict.copy(browser.capabilities)
                     capabilities.setdefault('platform', platform)
-                    combinations.append([capabilities, None])
+                    combinations.append([capabilities, browser.profile])
                 else:
                     for _platform in browser.platforms:
                         capabilities = dict.copy(browser.capabilities)
                         capabilities.setdefault('platform', _platform)
-                        combinations.append([capabilities, None])
+                        combinations.append([capabilities, browser.profile])
 
             return super(Decorators, cls).expand([combination for combination in combinations])
 
@@ -84,7 +83,8 @@ class Decorators(parameterized):
         _capabilities = dict.copy(browser.capabilities)
         _capabilities.update(capabilities)
 
-        return super(Decorators, cls).expand([(_capabilities, profile)]*iterations)
+        return super(Decorators, cls).expand(
+            [(_capabilities, profile or browser.profile)]*iterations)
 
     @classmethod
     def random_browser(cls):
@@ -96,4 +96,4 @@ class Decorators(parameterized):
         capabilities = dict.copy(browser.capabilities)
         capabilities.setdefault('platform', random.choice(browser.platforms))
 
-        return super(Decorators, cls).expand([(capabilities, None)])
+        return super(Decorators, cls).expand([(capabilities, browser.profile)])

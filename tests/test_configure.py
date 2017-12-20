@@ -31,13 +31,14 @@ class TestConfigure(TestCase):
     def test_profile(self):
         """test configuring profile information"""
         browser = BROWSERS.find(BROWSERS.FIREFOX.name)
+        original = browser.profile
         profile = webdriver.FirefoxProfile()
         profile.set_preference('security.enterprise_roots.enabled', True)
         Configure.profile(browser.name, profile)
         for attr, value in iteritems(profile.__dict__):
             self.assertEqual(getattr(browser.profile, attr), value)
-        Configure.profile(browser.name, None)
-        self.assertIsNone(browser.profile)
+        Configure.profile(browser.name, original)
+        self.assertEqual(browser.profile, original)
 
     def test_enable_disable(self):
         """test configure enabling and disabling browsers"""
