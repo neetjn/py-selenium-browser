@@ -18,7 +18,7 @@ Decorators for provisioning tests with selenium remote webdrivers.
 pip install pysbr
 ```
 
-Import `Decorators` and `Configure` from `pysb` to get started,
+Import `Decorators` and `Configure` from `pysbr` to get started,
 
 ```python
 import os
@@ -29,9 +29,16 @@ from pysbr import Configure, Decorators
 from pysbr.constants import BROWSERS, PLATFORMS
 
 
-Configure.update(name=BROWSERS.CHROME.name, platforms=[
+Configure.platforms(name=BROWSERS.CHROME.name, platforms=[
     PLATFORMS.WINDOWS.get('default'f)
 ])
+
+Configure.capabilities(name=BROWSERS.EDGE.name, capabilities={
+    'version': '5'
+})
+
+Configure.profile(name=BROWSERS.SAFARI.name, profile=None)
+
 Configure.enable(name=BROWSERS.FIREFOX.name)
 Configure.disable(name=BROWSERS.OPERA.name)
 
@@ -49,6 +56,16 @@ class SampleTest(TestCase):
         browser = self.bootstrap(capabilities, profile)
         ...
         browser.stop_client()
+```
+
+This project supports the Chrome, Firefox, Edge, Safari, and Opera browsers by default -- but other browsers can be defined like so,
+
+```python
+from pysbr.constants import BROWSERS
+
+BROWSERS.ANDROID = BROWSERS.BROWSER(
+    name, platforms, capabilities=None, profile=None)
+BROWSERS.browserS.append(BROWSERS.ANDROID)
 ```
 
 ## Testing
