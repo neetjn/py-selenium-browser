@@ -51,11 +51,11 @@ class SampleTest(TestCase):
         browser.stop_client()
         
     @Decorators.browser(name='chrome', platform='WIN10')
-    def test_login(self, capabilities, profile):
+    def test_register(self, capabilities, profile):
         ...
         
     @Decorators.random_browser()
-    def test_login(self, capabilities, profile):
+    def test_logout(self, capabilities, profile):
         ...
 ```
 
