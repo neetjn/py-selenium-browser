@@ -1,13 +1,11 @@
 import random
-
+from unittest import TestCase
 from pysbr import Decorators
 from pysbr.constants import BROWSERS
-from unittest import TestCase
 
 
-for browser in BROWSERS.browsers:
-    browser.enabled = True
-
+for b in BROWSERS.browsers:
+    b.enabled = True
 
 class TestConfigure(TestCase):
 
@@ -15,9 +13,6 @@ class TestConfigure(TestCase):
         self.random_browser = False
         self.browser = False
         self.browsers = 0
-
-        self.previous_iter = 0
-        self.current_iter = 0
 
     @Decorators.random_browser()
     def test_random(self, capabilities, profile):
@@ -30,16 +25,17 @@ class TestConfigure(TestCase):
     @Decorators.browser(name=BROWSERS.CHROME.name)
     def test_browser(self, capabilities, profile):
         """test decorator single browser construction"""
-        # self.assertEqual(capabilities[])
+        self.assertEqual(capabilities['browserName'], BROWSERS.CHROME.name)
+        self.assertEqual(profile, BROWSERS.CHROME.profile)
 
-    @Decorators.browser(name=BROWSERS.CHROME.name, iterations=5)
+    @Decorators.browser(name=BROWSERS.OPERA.name, iterations=5)
     def test_browser_iter(self, capabilities, profile):
         """test decorator single browser construction with iterations"""
-        self.assertIsInstance(capabilities, dict)
-        self.assertIsNone(profile)
+        self.assertEqual(capabilities['browserName'], BROWSERS.OPERA.name)
+        self.assertEqual(profile, BROWSERS.OPERA.profile)
 
-
-    @Decorators.browser(name=BROWSERS.CHROME.name)
+    @Decorators.browsers()
     def test_browsers(self, capabilities, profile):
         """test decorator all browsers construction"""
-        pass
+        browser = BROWSERS.find(name=capabilities['browserName'])
+        self.assertEqual(browser.profile, profile)

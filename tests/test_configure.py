@@ -1,11 +1,13 @@
 import random
-
+from unittest import TestCase
 from pysbr import Configure
 from pysbr.constants import BROWSERS, PLATFORMS
 from selenium import webdriver
 from six import iteritems
-from unittest import TestCase
 
+
+for b in BROWSERS.browsers:
+    b.enabled = True
 
 class TestConfigure(TestCase):
 
@@ -34,11 +36,13 @@ class TestConfigure(TestCase):
         Configure.profile(browser.name, profile)
         for attr, value in iteritems(profile.__dict__):
             self.assertEqual(getattr(browser.profile, attr), value)
+        Configure.profile(browser.name, None)
+        self.assertIsNone(browser.profile)
 
     def test_enable_disable(self):
         """test configure enabling and disabling browsers"""
         browser = random.choice(BROWSERS.browsers)
-        Configure.enable(browser.name)
-        self.assertTrue(browser.enabled)
         Configure.disable(browser.name)
         self.assertFalse(browser.enabled)
+        Configure.enable(browser.name)
+        self.assertTrue(browser.enabled)
