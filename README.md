@@ -49,6 +49,14 @@ class SampleTest(TestCase):
             COMMAND_EXECUTOR, capabilities, profile)
         ...
         browser.stop_client()
+        
+    @Decorators.browser(name='chrome', platform='WIN10')
+    def test_login(self, capabilities, profile):
+        ...
+        
+    @Decorators.random_browser()
+    def test_login(self, capabilities, profile):
+        ...
 ```
 
 This project supports the Chrome, Firefox, Edge, Safari, and Opera browsers by default -- but other browsers can be defined like so,
