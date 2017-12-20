@@ -26,21 +26,15 @@ from selenium import webdriver
 from unittest import TestCase
 
 from pysbr import Configure, Decorators
-from pysbr.constants import BROWSERS, PLATFORMS
 
 
-Configure.platforms(name=BROWSERS.CHROME.name, platforms=[
-    PLATFORMS.WINDOWS.get('default'f)
-])
-
-Configure.capabilities(name=BROWSERS.EDGE.name, capabilities={
+Configure.platforms(name='chrome', platforms=['WIN10'])
+Configure.capabilities(name='edge', capabilities={
     'version': '5'
 })
-
-Configure.profile(name=BROWSERS.SAFARI.name, profile=None)
-
-Configure.enable(name=BROWSERS.FIREFOX.name)
-Configure.disable(name=BROWSERS.OPERA.name)
+Configure.profile(name='safari', profile=None)
+Configure.enable(name='firefox')
+Configure.disable(name='opera')
 
 COMMAND_EXECUTOR = os.environ.get('COMMAND_EXECUTOR')
 
@@ -63,8 +57,7 @@ This project supports the Chrome, Firefox, Edge, Safari, and Opera browsers by d
 ```python
 from pysbr.constants import BROWSERS
 
-BROWSERS.ANDROID = BROWSERS.BROWSER(
-    name, platforms, capabilities=None, profile=None)
+BROWSERS.ANDROID = BROWSERS.BROWSER(name, platforms, capabilities=None, profile=None)
 BROWSERS.browserS.append(BROWSERS.ANDROID)
 ```
 
