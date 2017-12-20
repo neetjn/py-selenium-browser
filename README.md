@@ -6,6 +6,8 @@
 
 Decorators for provisioning tests with selenium remote webdrivers.
 
+For an all inclusive selenium framework check out [py-component-controller](https://github.com/neetjn/py-component-controller)!
+
 ## About
 
 `py-selenium-browser` is a very simple project based off of [nose_parammeterzed](https://github.com/wolever/parameterized). This project provides very simple and easily configurable decorators to parameterize individual tests to run against multiple browser configurations against your stack.
