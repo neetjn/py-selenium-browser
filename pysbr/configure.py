@@ -1,5 +1,7 @@
-from pysbr.constants import BROWSERS, PLATFORMS
+from copy import deepcopy
 from six import iteritems
+
+from pysbr.constants import BROWSERS, PLATFORMS
 
 
 class Configure(object):
@@ -29,6 +31,17 @@ class Configure(object):
         assert all(platform in available for platform in platforms), \
                     'An error occurred while updating; platform does not exist'
         BROWSERS.find(name, enabled=False).platforms = platforms
+
+    @staticmethod
+    def profile(name, profile):
+        """
+        :Description: Update an available browser's profile.
+        :param name: Name of browser to target.
+        :type name: string
+        :param profile: Profile to override.
+        :type profile: FirefoxProfile, Options, ...
+        """
+        BROWSERS.find(name, enabled=False).profile = deepcopy(profile)
 
     @staticmethod
     def enable(name):

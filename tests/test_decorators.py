@@ -16,6 +16,9 @@ class TestConfigure(TestCase):
         self.browser = False
         self.browsers = 0
 
+        self.previous_iter = 0
+        self.current_iter = 0
+
     @Decorators.random_browser()
     def test_random(self, capabilities, profile):
         """test decorator random browser construction"""
@@ -27,7 +30,14 @@ class TestConfigure(TestCase):
     @Decorators.browser(name=BROWSERS.CHROME.name)
     def test_browser(self, capabilities, profile):
         """test decorator single browser construction"""
-        pass
+        # self.assertEqual(capabilities[])
+
+    @Decorators.browser(name=BROWSERS.CHROME.name, iterations=5)
+    def test_browser_iter(self, capabilities, profile):
+        """test decorator single browser construction with iterations"""
+        self.assertIsInstance(capabilities, dict)
+        self.assertIsNone(profile)
+
 
     @Decorators.browser(name=BROWSERS.CHROME.name)
     def test_browsers(self, capabilities, profile):

@@ -1,7 +1,8 @@
 import random
-from pysbr.constants import BROWSERS, PLATFORMS
 from nose_parameterized import parameterized
 from six import iteritems
+
+from pysbr.constants import BROWSERS, PLATFORMS
 
 
 class Decorators(parameterized):
@@ -69,7 +70,7 @@ class Decorators(parameterized):
         :param capabilities: Capabilities of remote webdriver.
         :type capabilities: dict
         :param profile: Profile for remote webdriver.
-        :type profile: FirefoxProfile, ChromeOptions, ...
+        :type profile: FirefoxProfile, Options, ...
         """
 
         browser = BROWSERS.find(name)
