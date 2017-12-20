@@ -41,13 +41,10 @@ COMMAND_EXECUTOR = os.environ.get('COMMAND_EXECUTOR')
 
 class SampleTest(TestCase):
 
-    def bootstrap(capabilities, profile):
-        return webdriver.Remote(
-            COMMAND_EXECUTOR, capabilities, profile)
-
     @Decorators.browsers()
     def test_login(self, capabilities, profile):
-        browser = self.bootstrap(capabilities, profile)
+        browser = webdriver.Remote(
+            COMMAND_EXECUTOR, capabilities, profile)
         ...
         browser.stop_client()
 ```
@@ -57,9 +54,12 @@ This project supports the Chrome, Firefox, Edge, Safari, and Opera browsers by d
 ```python
 from pysbr.constants import BROWSERS
 
-BROWSERS.ANDROID = BROWSERS.BROWSER(name, platforms, capabilities=None, profile=None)
+BROWSERS.ANDROID = BROWSERS.BROWSER(
+    name, platforms, capabilities=None, profile=None)
 BROWSERS.browserS.append(BROWSERS.ANDROID)
 ```
+
+All browsers also disabled by default, so be sure to enable them prior to use with the decorators.
 
 ## Testing
 
